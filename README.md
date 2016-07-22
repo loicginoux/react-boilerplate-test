@@ -1,3 +1,7 @@
+![alt tag](https://raw.githubusercontent.com/loicginoux/react-boilerplate-test/master/readme_gif_demo.png)
+
+
+
 <img src="https://raw.githubusercontent.com/mxstbr/react-boilerplate-brand/master/assets/banner-metal.jpg" alt="react boilerplate banner" align="center" />
 
 <br />
