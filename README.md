@@ -1,4 +1,4 @@
-![alt tag](https://raw.githubusercontent.com/loicginoux/react-boilerplate-test/master/readme_gif_demo.png)
+![alt tag](https://raw.githubusercontent.com/loicginoux/react-boilerplate-test/master/readme_gif_demo.gif)
 
 
 
