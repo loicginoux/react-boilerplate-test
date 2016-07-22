@@ -33,9 +33,9 @@ export default class HomePage extends React.Component { // eslint-disable-line r
         <h1>This is the Homepage!</h1>
         <ul>
           <li>
-            <RaisedButton label="Alerts" onClick={this.openAlertsPage} /></li>
+            <RaisedButton label="Alerts" primary={true} onClick={this.openAlertsPage} /></li>
           <li>
-            <RaisedButton label="home"  />
+            <RaisedButton label="home" secondary={true} />
           </li>
         </ul>
         <Footer />

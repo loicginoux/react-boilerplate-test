@@ -38,10 +38,16 @@ export class AlertForm extends React.Component { // eslint-disable-line react/pr
     };
   }
   
-  validateName = () =>{
-    this.setState({
-      nameErrorText: "This field is required"
-    })
+  validateName = (e) =>{
+    if (!e.target.value) {
+      this.setState({
+        nameErrorText: "This field is required"
+      })
+    }else{
+      this.setState({
+        nameErrorText: ""
+      })
+    }
   }
   onSubmit = () => {
     this.props.changeRoute("/alerts");
