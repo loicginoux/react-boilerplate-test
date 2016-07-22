@@ -5,11 +5,52 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  CHANGE_LANGUAGE,
+  CHANGE_NAME,
+  CHANGE_ANY_KEYWORDS,
+  CREATE_ALERT,
+  ALERT_CREATED_SUCCESS,
+  ALERT_CREATED_ERROR
 } from './constants';
 
-export function defaultAction() {
+export function changeLanguage(lang) {
   return {
-    type: DEFAULT_ACTION,
+    type: CHANGE_LANGUAGE,
+    lang
+  };
+}
+
+export function changeName(name) {
+  return {
+    type: CHANGE_NAME,
+    name
+  };
+}
+
+export function changeKeywords(any_keywords) {
+  return {
+    type: CHANGE_ANY_KEYWORDS,
+    any_keywords
+  };
+}
+
+export function createAlert(alert) {
+  return {
+    type: CREATE_ALERT,
+    alert
+  };
+}
+
+export function alertsCreated(alert) {
+  return {
+    type: ALERT_CREATED_SUCCESS,
+    alert
+  };
+}
+
+export function alertCreatedError(error) {
+  return {
+    type: ALERT_CREATED_ERROR,
+    error
   };
 }

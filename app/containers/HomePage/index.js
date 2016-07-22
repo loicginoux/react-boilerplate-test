@@ -14,6 +14,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import styles from './styles.css';
+import RaisedButton from 'material-ui/RaisedButton';
+import Footer from 'components/Footer';
+
 
 export default class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   openRoute = (route) => {
@@ -29,11 +32,15 @@ export default class HomePage extends React.Component { // eslint-disable-line r
       <div>
         <h1>This is the Homepage!</h1>
         <ul>
-          <li><a className={styles.link} onClick={this.openAlertsPage}>Alerts</a></li>
-          <li>Home</li>
+          <li>
+            <RaisedButton label="Alerts" onClick={this.openAlertsPage} /></li>
+          <li>
+            <RaisedButton label="home"  />
+          </li>
         </ul>
-
+        <Footer />
       </div>
+
     );
   }
 }

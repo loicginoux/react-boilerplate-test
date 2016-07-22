@@ -12,3 +12,4 @@
 export const LOAD_ALERTS = 'Alerti/AlertsList/LOAD_ALERTS';
 export const LOAD_ALERTS_SUCCESS = 'Alerti/AlertsList/LOAD_ALERTS_SUCCESS';
 export const LOAD_ALERTS_ERROR = 'Alerti/AlertsList/LOAD_ALERTS_ERROR';
+export const DELETE_ALERT = 'Alerti/AlertsList/DELETE_ALERT';

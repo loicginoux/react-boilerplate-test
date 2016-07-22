@@ -19,6 +19,7 @@ import {
   LOAD_ALERTS,
   LOAD_ALERTS_SUCCESS,
   LOAD_ALERTS_ERROR,
+  DELETE_ALERT,
 } from './constants';
 
 /**
@@ -58,5 +59,12 @@ export function repoLoadingError(error) {
   return {
     type: LOAD_ALERTS_ERROR,
     error,
+  };
+}
+
+export function deleteAlert(alert) {
+  return {
+    type: DELETE_ALERT,
+    alert
   };
 }

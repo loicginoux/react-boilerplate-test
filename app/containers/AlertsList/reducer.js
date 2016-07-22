@@ -14,7 +14,9 @@ import {
   LOAD_ALERTS_SUCCESS,
   LOAD_ALERTS,
   LOAD_ALERTS_ERROR,
+  DELETE_ALERT,
 } from './constants';
+
 import { fromJS } from 'immutable';
 
 // The initial state of the App
@@ -42,6 +44,11 @@ function alertsListReducer(state = initialState, action) {
       return state
         .set('error', action.error)
         .set('loading', false);
+    case DELETE_ALERT:
+      const filteredAlerts = state.getIn(['userData', 'alerts']).filter(function(alert){
+        return alert.id !== action.alert.id
+      })
+      return state.setIn(['userData', 'alerts'], filteredAlerts);
     default:
       return state;
   }
