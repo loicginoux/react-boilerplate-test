@@ -28,7 +28,6 @@ export default class App extends React.Component { // eslint-disable-line react/
   static propTypes = {
     children: React.PropTypes.node,
   };
-
   render() {
     return (
       <MuiThemeProvider>

@@ -27,15 +27,16 @@ import ListItem from 'components/ListItem';
 import AlertListItem from 'containers/AlertListItem';
 
 export class AlertsList extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  componentWillMount = (nextProps) => {
-    this.props.onLoadAlerts()
+  componentWillMount = () => {
+    this.props.onLoadAlerts();
   }
 
   openCreateAlertsPage = () =>
-    this.props.changeRoute("/alerts/new");
+    this.props.changeRoute('/alerts/new');
 
   render() {
     let mainContent = null;
+    let subtitle = null;
     // Show a loading indicator when we're loading
     if (this.props.loading) {
       mainContent = (<List component={LoadingIndicator} />);
@@ -49,17 +50,19 @@ export class AlertsList extends React.Component { // eslint-disable-line react/p
 
     // If we're not loading, don't have an error and there are alerts, show the alerts
     } else if (this.props.alerts !== false) {
-      mainContent = (<List items={this.props.alerts} component={AlertListItem}/>);
+      mainContent = (<List items={this.props.alerts} component={AlertListItem} />);
+      subtitle = (<h2>Total: {this.props.alerts.length} alerts</h2>);
     }
 
     return (
       <div className={styles.alertsList}>
-        <h1>This is Alerts List page</h1>
+        <h1>Alerts page</h1>
+        {subtitle}
         <ul>
           <li>
-            <RaisedButton label="Create new alert"  onClick={this.openCreateAlertsPage} /></li>
+            <RaisedButton label="Create new alert" onClick={this.openCreateAlertsPage} /></li>
           <li>
-            <RaisedButton label="refresh alerts" primary={true} onClick={this.props.onLoadAlerts}/>
+            <RaisedButton label="refresh alerts" primary onClick={this.props.onLoadAlerts} />
           </li>
         </ul>
         {mainContent}
@@ -79,7 +82,7 @@ AlertsList.propTypes = {
     React.PropTypes.bool,
   ]),
   onLoadAlerts: React.PropTypes.func,
-  changeRoute: React.PropTypes.func
+  changeRoute: React.PropTypes.func,
 };
 
 

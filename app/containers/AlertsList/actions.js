@@ -44,7 +44,7 @@ export function loadAlerts() {
 export function alertsLoaded(alerts) {
   return {
     type: LOAD_ALERTS_SUCCESS,
-    alerts
+    alerts,
   };
 }
 
@@ -65,6 +65,6 @@ export function repoLoadingError(error) {
 export function deleteAlert(alert) {
   return {
     type: DELETE_ALERT,
-    alert
+    alert,
   };
 }

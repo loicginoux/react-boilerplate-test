@@ -27,9 +27,8 @@ const initialState = fromJS({
   }),
 });
 
-function AlertsListReducer(state = initialState, action) {
-  console.log("state App", state, action)
-  return state
+function AlertsListReducer(state = initialState) {
+  return state;
   // switch (action.type) {
   //   case LOAD_ALERTS:
   //     return state

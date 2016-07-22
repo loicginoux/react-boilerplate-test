@@ -13,12 +13,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import styles from './styles.css';
+// import styles from './styles.css';
 import RaisedButton from 'material-ui/RaisedButton';
 import Footer from 'components/Footer';
 
 
-export default class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   openRoute = (route) => {
     this.props.changeRoute(route);
   };
@@ -33,9 +33,9 @@ export default class HomePage extends React.Component { // eslint-disable-line r
         <h1>This is the Homepage!</h1>
         <ul>
           <li>
-            <RaisedButton label="Alerts" primary={true} onClick={this.openAlertsPage} /></li>
+            <RaisedButton label="Alerts" primary onClick={this.openAlertsPage} /></li>
           <li>
-            <RaisedButton label="home" secondary={true} />
+            <RaisedButton label="home" secondary />
           </li>
         </ul>
         <Footer />
@@ -52,7 +52,7 @@ HomePage.propTypes = {
 
 function mapDispatchToProps(dispatch) {
   return {
-    changeRoute: (url) => dispatch(push(url))
+    changeRoute: (url) => dispatch(push(url)),
   };
 }
 

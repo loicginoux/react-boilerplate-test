@@ -1,21 +1,19 @@
-import { take, call, put, cancel, fork} from 'redux-saga/effects';
+import { take, call, put, cancel, fork } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { LOAD_ALERTS, DELETE_ALERT} from 'containers/AlertsList/constants';
+import { LOAD_ALERTS, DELETE_ALERT } from 'containers/AlertsList/constants';
 
-import { 
-  alertsLoaded, 
+import {
+  alertsLoaded,
   alertLoadingError,
-  alertDeletedSuccess,
-  alertDeletedError
 } from './actions';
 
 import request from 'utils/request';
 
 
-const API_ROOT = 'http://api.alerti.local/v3'
-const API_TOKEN = '422bcf1e76d6b06c2dd24fafcae0d62efc2927c93355f893c18be53111b9'
+const API_ROOT = 'http://api.alerti.local/v3';
+const API_TOKEN = '422bcf1e76d6b06c2dd24fafcae0d62efc2927c93355f893c18be53111b9';
 
-export function* getAlerts(action) {
+export function* getAlerts() {
   const requestURL = API_ROOT + `/alerts.json?token=${API_TOKEN}&per_page=10`;
 
   // Call our request helper (see 'utils/request')
@@ -28,10 +26,10 @@ export function* getAlerts(action) {
 }
 
 export function* delAlert(payload) {
-  const id = payload.alert.id 
+  const id = payload.alert.id;
   const requestURL = API_ROOT + `/alerts/${id}?token=${API_TOKEN}`;
   const requestOptions = {
-    'method': 'DELETE',
+    method: 'DELETE',
     // 'mode': 'no-cors',
     // 'headers': {
     //   'Accept': 'application/json',
@@ -40,7 +38,8 @@ export function* delAlert(payload) {
   };
 
   // // Call our request helper (see 'utils/request')
-  const resp = yield call(request, requestURL, requestOptions);
+  yield call(request, requestURL, requestOptions);
+  // const resp = yield call(request, requestURL, requestOptions);
   // if (!resp.err) {
   //   yield put(alertDeletedSuccess(payload.alert));
   // } else {
@@ -57,7 +56,7 @@ export function* getAlertsWatcher() {
 export function* getDelAlertsWatcher() {
   while (true) {
     const action = yield take(DELETE_ALERT);
-    yield call(delAlert, action)
+    yield call(delAlert, action);
   }
 }
 
@@ -69,7 +68,7 @@ export function* alertsData() {
   // // Suspend execution until location changes
   yield take(LOCATION_CHANGE);
   yield cancel(watcher);
-  // yield cancel(watcherDelete);
+  yield cancel(watcherDelete);
 }
 
 

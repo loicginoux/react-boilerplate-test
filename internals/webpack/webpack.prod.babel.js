@@ -4,6 +4,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
+const ExtendedDefinePlugin = require('extended-define-webpack-plugin');
+const appConfig = require('./env_variables/prod.js');
 
 // PostCSS plugins
 const cssnext = require('postcss-cssnext');
@@ -107,5 +109,11 @@ module.exports = require('./webpack.base.babel')({
         caches: ['main', 'additional'],
       },
     }),
+
+    new ExtendedDefinePlugin({
+      APP_CONFIG: appConfig,
+    }),
+
+
   ],
 });

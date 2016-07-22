@@ -10,15 +10,14 @@ import { connect } from 'react-redux';
 import { deleteAlert } from 'containers/AlertsList/actions';
 
 import ListItem from 'components/ListItem';
-import FontIcon from 'material-ui/FontIcon';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import styles from './styles.css';
 
 export class AlertListItem extends React.Component { // eslint-disable-line react/prefer-stateless-function
   onDelete = () => {
-    this.props.onDelete(this.props.item)
-  }
+    this.props.onDelete(this.props.item);
+  };
 
   render() {
     // Put together the content of the repository
@@ -26,13 +25,13 @@ export class AlertListItem extends React.Component { // eslint-disable-line reac
     if (this.props.item) {
       const content = (
         <div>
-          <RaisedButton label="Delete" onClick={this.onDelete} className={styles.delButton}/>
+          <RaisedButton label="Delete" onClick={this.onDelete} className={styles.delButton} />
           <p>{this.props.item.name}</p>
         </div>
       );
-      mainContent = (<ListItem key={`alert-list-item-${this.props.item.id}`} item={content} />)
+      mainContent = (<ListItem key={`alert-list-item-${this.props.item.id}`} item={content} />);
     } else {
-      mainContent = (<ListItem item={'deleted!'} />)
+      mainContent = (<ListItem item={'deleted!'} />);
     }
     // Render the content into a list item
     return (
@@ -42,13 +41,14 @@ export class AlertListItem extends React.Component { // eslint-disable-line reac
 }
 
 AlertListItem.propTypes = {
-  item: React.PropTypes.object
+  item: React.PropTypes.object,
+  onDelete: React.PropTypes.func,
 };
 
 
 function mapDispatchToProps(dispatch) {
   return {
-    onDelete:  (alert) => dispatch(deleteAlert(alert)),
+    onDelete: (alert) => dispatch(deleteAlert(alert)),
     dispatch,
   };
 }

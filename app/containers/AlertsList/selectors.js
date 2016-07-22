@@ -17,11 +17,9 @@ const selectAlerts = () => createSelector(
   (alertsPageState) => alertsPageState.getIn(['userData', 'alerts'])
 );
 
-
-
 export {
   selectGlobalAlerts,
   selectLoading,
   selectError,
-  selectAlerts
+  selectAlerts,
 };

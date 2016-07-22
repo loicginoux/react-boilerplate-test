@@ -45,9 +45,10 @@ function alertsListReducer(state = initialState, action) {
         .set('error', action.error)
         .set('loading', false);
     case DELETE_ALERT:
-      const filteredAlerts = state.getIn(['userData', 'alerts']).filter(function(alert){
-        return alert.id !== action.alert.id
-      })
+      filter = (alert) => {
+        return (alert.id !== action.alert.id);
+      };
+      const filteredAlerts = state.getIn(['userData', 'alerts']).filter(filter);
       return state.setIn(['userData', 'alerts'], filteredAlerts);
     default:
       return state;

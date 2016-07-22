@@ -1,11 +1,11 @@
-import {
-  selectAlertForm,
-} from '../selectors';
-import { fromJS } from 'immutable';
-import expect from 'expect';
+// import {
+//   selectAlertForm,
+// } from '../selectors';
+// import { fromJS } from 'immutable';
+// import expect from 'expect';
 
-const selector = selectAlertForm();
+// const selector = selectAlertForm();
 
-describe('selectAlertForm', () => {
+// describe('selectAlertForm', () => {
 
-});
+// });

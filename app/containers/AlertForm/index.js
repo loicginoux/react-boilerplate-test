@@ -8,14 +8,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import selectAlertForm from './selectors';
-import { createStructuredSelector } from 'reselect';
 
-import { 
+import {
   changeLanguage,
   changeName,
   changeKeywords,
-  createAlert
-} from './actions'
+  createAlert,
+} from './actions';
 
 import styles from './styles.css';
 
@@ -23,34 +22,33 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Router, RouterContext, Link, browserHistory } from 'react-router';
 
 const items = [
   <MenuItem key={'fr'} value={'fr'} primaryText="French" />,
-  <MenuItem key={'en'} value={'en'} primaryText="English" />
+  <MenuItem key={'en'} value={'en'} primaryText="English" />,
 ];
 
 export class AlertForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
-      nameErrorText: ""
+      nameErrorText: '',
     };
   }
-  
-  validateName = (e) =>{
+
+  validateName = (e) => {
     if (!e.target.value) {
       this.setState({
-        nameErrorText: "This field is required"
+        nameErrorText: 'This field is required'
       })
-    }else{
+    } else {
       this.setState({
-        nameErrorText: ""
+        nameErrorText: '',
       })
     }
   }
   onSubmit = () => {
-    this.props.changeRoute("/alerts");
+    this.props.changeRoute('/alerts');
     this.props.submitForm();
   }
 
@@ -58,17 +56,18 @@ export class AlertForm extends React.Component { // eslint-disable-line react/pr
     return (
       <div className={styles.alertForm}>
         <h2>Create a new keyword alert</h2>
-        <TextField 
-          floatingLabelText="Alert Name" 
+        <TextField
+          floatingLabelText="Alert Name"
           onChange={this.props.onChangeName}
           onBlur={this.validateName}
           errorText={this.state.nameErrorText}
         />
         <br />
         <br />
-        <TextField hintText="separate by a comma" 
-                  floatingLabelText="At least one of these keywords"
-                  onChange={this.props.onChangeKeywords}
+        <TextField 
+          hintText="separate by a comma"
+          floatingLabelText="At least one of these keywords"
+          onChange={this.props.onChangeKeywords}
         />
         <br />
         <br />
@@ -80,23 +79,25 @@ export class AlertForm extends React.Component { // eslint-disable-line react/pr
         </SelectField>
         <br />
         <br />
-        <RaisedButton label="Create" primary={true} onClick={this.onSubmit}/>
+        <RaisedButton label="Create" primary onClick={this.onSubmit} />
         <br />
         <br />
-        <RaisedButton label="Back" onClick={this.context.router.goBack}/>
+        <RaisedButton label="Back" onClick={this.context.router.goBack} />
       </div>
     );
   }
 }
 
 AlertForm.contextTypes = {
-  router: React.PropTypes.object
+  router: React.PropTypes.object,
 };
 
 AlertForm.propTypes = {
   onChangeLangage: React.PropTypes.func,
   onChangeName: React.PropTypes.func,
-  onChangeKeywords: React.PropTypes.func
+  onChangeKeywords: React.PropTypes.func,
+  changeRoute: React.PropTypes.func,
+  submitForm: React.PropTypes.func,
 };
 
 
